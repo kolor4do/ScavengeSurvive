@@ -744,7 +744,7 @@ timer _UnloadWeapon[300](playerid, _itemid)
 	new Item:itemid = Item:_itemid;
 
 	dbg("weapon-core", 1, "[_UnloadWeapon] unloading item %d magammo %d reserve %d", _:itemid, GetItemWeaponItemMagAmmo(itemid), GetItemWeaponItemReserve(itemid));
-	if(GetPlayerItem(playerid) != itemid)
+	if(GetPlayerItem(playerid) != itemid || !IsValidItem(itemid))
 	{
 		itmw_DropItemID[playerid] = INVALID_ITEM_ID;
 		return;
@@ -1107,4 +1107,3 @@ stock GetPlayerTotalAmmo(playerid)
 
 	return GetItemWeaponItemMagAmmo(itemid) + GetItemWeaponItemReserve(itemid);
 }
-
